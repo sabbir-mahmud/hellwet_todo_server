@@ -1,0 +1,26 @@
+{
+  "name": "todo_server",
+  "version": "1.0.0",
+  "description": "to do server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon src/index.js",
+    "build": "babel src --out-dir build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SM Sabbir Mahmud",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "babel-minify": "^0.5.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3"
+  }
+}
