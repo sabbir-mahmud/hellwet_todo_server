@@ -25,14 +25,47 @@ const login_controller = async (req, res) => {
       { email: email },
       process.env.ACCESS_TOKEN_SECRET,
       {
-        expiresIn: "3d",
+        expiresIn: "1h",
       }
     );
-    return res.status(200).json({ data, accessToken });
+    const refreshToken = jwt.sign(
+      { email: email },
+      process.env.ACCESS_TOKEN_SECRET,
+      {
+        expiresIn: "30d",
+      }
+    );
+    return res.status(200).json({ data, accessToken, refreshToken });
   } catch (error) {
     return res.status(400).send(error);
   }
 };
 
+// refresh token
+const refreshToken = async (req, res) => {
+  try {
+    const token = req.body.refreshToken;
+    if (!token) {
+      return res.status(401).send({ message: "Unauthorize Access" });
+    }
+    const { email } = jwt.verify(refreshToken, process.env.JWT_SECRET_KEY);
+
+    const accessToken = jwt.sign({ email: email }, process.env.JWT_SECRET_KEY, {
+      expiresIn: "1d",
+    });
+    const newRefreshToken = jwt.sign(
+      { email: email },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: "30d" }
+    );
+
+    return res.status(200).json({
+      message: "User Validated",
+      accessToken: accessToken,
+      refreshToken: newRefreshToken,
+    });
+  } catch (error) {}
+};
+
 // exports
-export { login_controller };
+export { login_controller, refreshToken };
