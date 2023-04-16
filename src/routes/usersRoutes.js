@@ -10,7 +10,7 @@ const router = Router();
 
 // authenticate routes
 router.put("/", login_controller);
-router.post("/", refreshToken);
+router.post("/refresh", refreshToken);
 
 // exports
 export default router;

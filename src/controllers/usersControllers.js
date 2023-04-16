@@ -37,6 +37,7 @@ const login_controller = async (req, res) => {
     );
     return res.status(200).json({ data, accessToken, refreshToken });
   } catch (error) {
+    console.log(error);
     return res.status(400).send(error);
   }
 };
