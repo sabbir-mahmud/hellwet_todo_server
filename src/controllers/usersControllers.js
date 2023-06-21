@@ -25,7 +25,7 @@ const login_controller = async (req, res) => {
       { email: email },
       process.env.ACCESS_TOKEN_SECRET,
       {
-        expiresIn: "1h",
+        expiresIn: "1d",
       }
     );
     const refreshToken = jwt.sign(
