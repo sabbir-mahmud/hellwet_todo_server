@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./configs/Database.js";
+import profileRouter from "./routes/profileRoutes.js";
 import taskRouter from "./routes/tasksRoutes.js";
 import authRouter from "./routes/usersRoutes.js";
 
@@ -19,15 +20,14 @@ app.use(express.static("uploads"));
 // connect to Database
 connectDB();
 
-// auth routes
+// routes
 app.use("/api/auth/", authRouter);
-
-// tasks routes
 app.use("/api/task/", taskRouter);
+app.use("/api/profile/", profileRouter);
 
 // root route
 app.get("/", async (req, res) => {
-  res.send("server running");
+  res.status(200).send("server running");
 });
 
 // listening server to port

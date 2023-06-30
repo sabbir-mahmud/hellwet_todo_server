@@ -1,5 +1,6 @@
 import {
   ControllerSets,
+  FileServe,
   FileUploaderControllerSets,
 } from "express-controller-sets";
 import ProfileModel from "../models/ProfileModel.js";
@@ -7,10 +8,10 @@ import { basePath } from "../settings.js";
 
 // Create an instance of the controller
 // (Mongoose Model, Sorting/ordering field name, filters using req.query)
-const taskController = new ControllerSets(ProfileModel, "-_id", ["email"]);
+const profileController = new ControllerSets(ProfileModel, "-_id", ["email"]);
 
 // (Mongoose Model, Upload options, basePath)
-const uploadFile = new FileUploaderControllerSets(
+const profileUploadFile = new FileUploaderControllerSets(
   ProfileModel,
   {
     folder: "uploads/user/images/",
@@ -18,5 +19,7 @@ const uploadFile = new FileUploaderControllerSets(
   },
   basePath
 );
+const paths = ["uploads", "user", "images"];
+const profilePictures = new FileServe(paths, basePath);
 
-export { taskController, uploadFile };
+export { profileController, profilePictures, profileUploadFile };
