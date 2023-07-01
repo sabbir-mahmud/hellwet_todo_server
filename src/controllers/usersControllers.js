@@ -1,5 +1,6 @@
 // imports
 import jwt from "jsonwebtoken";
+import ProfileModel from "../models/ProfileModel.js";
 import userModel from "../models/usersModels.js";
 
 // login controller: Generate JWT Tokens
@@ -18,6 +19,7 @@ const login_controller = async (req, res) => {
       $set: user,
     };
     let data = await userModel.findOneAndUpdate(filter, updateDoc, options);
+    await ProfileModel.findOneAndUpdate(filter, updateDoc, options);
     if (!data) {
       data = await userModel.findOneAndUpdate(filter, updateDoc, options);
     }

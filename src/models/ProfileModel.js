@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const ProfileSchema = new mongoose.Schema({
   email: { type: String, required: [true, "email required!"] },
-  firstName: { type: String, required: [true, "first name required!"] },
-  lastName: { type: String, required: [true, "last name required!"] },
+  firstName: { type: String, required: false },
+  lastName: { type: String, required: false },
   bio: { type: String, required: false },
   education: { type: String, required: false },
   about: { type: String, required: false },
@@ -14,7 +14,6 @@ const ProfileSchema = new mongoose.Schema({
   certification: { type: Number, required: false },
   link: { type: String, required: false },
   address: { type: String, required: false },
-  img: { type: String, required: false },
   created_at: { type: Date, default: Date.now },
 });
 
