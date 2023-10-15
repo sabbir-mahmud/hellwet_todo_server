@@ -1,6 +1,6 @@
 # React To-Do Application Backend
 
-This project provides a backend server for a To-Do application built using Node.js and Express.js. The backend is designed to work seamlessly with a React frontend. It includes user authentication via email and Google, task creation, updating, viewing, and deletion, all secured with JSON Web Tokens (JWT).
+This project provides a backend server for a To-Do application built using Node.js and Express.js. The backend is designed to work seamlessly with a React frontend. It includes user authentication via email and Google, task creation, updating, viewing, and deletion, all secured with JSON Web Tokens (JWT) .
 
 ## Technology Stack
 
