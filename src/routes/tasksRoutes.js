@@ -1,12 +1,12 @@
 // imports
 import { Router } from "express";
 import { taskController } from "../controllers/taskClassController.js";
+import authenticate from "../middleware/authMiddleware.js";
 
 // routers
 const router = Router();
 
-// authenticated
-// router.use(authenticate);
+router.use(authenticate);
 
 // task routes
 router.get("/", taskController.getAll.bind(taskController));
